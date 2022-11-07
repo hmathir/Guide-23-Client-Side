@@ -1,6 +1,7 @@
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 
 const HomeService = () => {
@@ -26,12 +27,17 @@ const HomeService = () => {
                     {
                         services.map((service, index) => <div key={index} className="border border-black rounded-lg">
                             <div className="block rounded-lg p-4 shadow-lg shadow-indigo-100">
-                                <img
-                                    alt="Home"
-                                    src={service.img}
-                                    className="h-56 w-full rounded-md object-cover"
-                                />
-
+                                <PhotoProvider>
+                                    <div className="foo">
+                                        <PhotoView key={index} src={service.img}>
+                                            <img
+                                                alt="Home"
+                                                src={service.img}
+                                                className="h-56 w-full rounded-md object-cover"
+                                            />
+                                        </PhotoView>
+                                    </div>
+                                </PhotoProvider>
                                 <div className="mt-2">
                                     <dl>
                                         <div>
@@ -72,7 +78,7 @@ const HomeService = () => {
 
                                         <div className="sm:inline-flex sm:shrink-0 sm:items-center">
                                             <div className="mt-1.5 sm:ml-3 sm:mt-0">
-                                                <Link to={`/service/${service._id}`}  className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
+                                                <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
                                             </div>
                                         </div>
                                     </div>

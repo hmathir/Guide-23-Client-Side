@@ -22,13 +22,13 @@ However, your website **cannot** be related to your **previous assignments** or 
 ---DONE---
 3. Add two extra sections on the home page. Make sure it is unique and relevant to your website.
 
-
+---DONE---
 4. The services of the home page and the services of the services page will have the name of the service, image, rating(optional), price, a short description(maximum 100 characters), and a view details button with each service card.
 
-
+---DONE---
 5. When clicking on the image of the service, the picture will be viewed on full screen. Explore the package [react-photo-view](https://react-photo-view.vercel.app/en-US) for that.
 
-
+---DONE---
 6. On clicking the view details button, the user will be taken to the service details page: _/services/:id_ route
 
 

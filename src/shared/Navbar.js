@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
+import { AuthProvider } from "../Context/AuthContext";
 const Navbar = () => {
-    const user = ' '
+    const {user, logOut} = useContext(AuthProvider);
+    const handleLogOut = () => {
+        logOut().then(res=>res()).catch(err=>err.message);
+    }
     return (
         <div className="w-11/12 md:w-9/12 mx-auto">
             <header aria-label="Site Header" className="bg-white">
@@ -65,7 +70,7 @@ const Navbar = () => {
                             </nav>
                             <div className="flex items-center gap-4">
                                 {!user ? <div className="sm:flex sm:gap-4">
-                                    <Link className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" to="/login">
+                                    <Link className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow" to="/login">
                                         Login
                                     </Link>
                                     <div className="hidden sm:flex">
@@ -74,7 +79,7 @@ const Navbar = () => {
                                         </Link>
                                     </div>
                                 </div> : <div className="sm:flex sm:gap-4">
-                                    <Link className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" to="/">
+                                    <Link onClick={handleLogOut} className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow" to="/">
                                         Log Out
                                     </Link>
                                 </div>}
