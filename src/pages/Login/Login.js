@@ -18,7 +18,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         signInWithEmail(email, password).then(() => {
-            navigate(from, { replace: true });
+            navigate(from, { replace: true })
             toast.success("Sign In Succssful");
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
@@ -31,7 +31,7 @@ const Login = () => {
     }
     const handleGoogleLogin = () => {
         signInWithGoogle().then(() => {
-            navigate(from, { replace: true });
+            navigate(from, { replace: true })
             toast.success("Sign In Succssful");
         }).catch((e) => {
             toast.error(e.message);

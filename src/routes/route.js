@@ -3,9 +3,11 @@ import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import MyReviews from "../pages/MyReviews/MyReviews";
 import Register from "../pages/Register/Register";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Services from "../pages/Services/Services";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -28,19 +30,23 @@ const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({params}) => {
+                loader: ({ params }) => {
                     return fetch(`https://ass11-server.vercel.app/services/${params.id}`);
                 }
-                
+
             },
             {
-                path : '/login',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path : '/register',
+                path: '/register',
                 element: <Register></Register>
             },
+            {
+                path: '/my-reviews',
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            }
         ]
     }
 ])

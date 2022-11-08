@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Register = () => {
-    const { signUpWithEmail } = useContext(AuthProvider);
+    const { signUpWithEmail, updateUserProfile } = useContext(AuthProvider);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -14,11 +14,17 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const password = form.password.value;
         signUpWithEmail(email, password).then(() => {
+            updateUserProfile(name, photoURL).then(() => {
+            }).catch((error) => {
+                toast.error(error.message)
+            });
             navigate(from, { replace: true })
-            toast.success('Registration Successful')
             form.reset();
+            toast.success('Registration Successful')
         }).catch(e => console.log(e));
     }
 
@@ -28,6 +34,14 @@ const Register = () => {
             <div className="w-11/12 mx-auto max-w-md p-8 space-y-3 rounded-xl  border border-black mt-20">
                 <h1 className="text-2xl font-bold text-center text-[#BE123B] ">Sign Up</h1>
                 <form onSubmit={handleRegister} className="space-y-6 ng-untouched ng-pristine ng-valid">
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="name" className="block text-[#BE123B]  font-bold">Name*</label>
+                        <input required type="text" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                    </div>
+                    <div className="space-y-1 text-sm">
+                        <label htmlFor="photoURL" className="block text-[#BE123B]  font-bold">Photo URL*</label>
+                        <input required type="text" name="photoURL" id="photoURL" placeholder="Photo URL" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                    </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block text-[#BE123B]  font-bold">Email*</label>
                         <input required type="email" name="email" id="email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />

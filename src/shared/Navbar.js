@@ -22,7 +22,7 @@ const Navbar = () => {
                                 <Link to='/services'><li>Services</li></Link>
                                 <Link to='/blog'><li>Blog</li></Link>
                                 {user ? <>
-                                    <Link><li>My Reviews</li></Link>
+                                    <Link to='/my-reviews'><li>My Reviews</li></Link>
                                     <Link><li>Add Service</li></Link>
                                 </> : <></>}
                             </ul>
@@ -56,7 +56,7 @@ const Navbar = () => {
 
                                     {user ? <>
                                         <li>
-                                            <Link className="text-gray-500 transition hover:text-gray-500/75" to="/blog">
+                                            <Link className="text-gray-500 transition hover:text-gray-500/75" to="/my-reviews">
                                                 My Review
                                             </Link>
                                         </li>
@@ -70,18 +70,18 @@ const Navbar = () => {
                             </nav>
                             <div className="flex items-center gap-4">
                                 {!user ? <div className="sm:flex sm:gap-4">
-                                    <Link className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow" to="/login">
+                                    <Link to='/login' className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow">
                                         Login
                                     </Link>
                                     <div className="hidden sm:flex">
-                                        <Link className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" to="/register">
+                                        <Link className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-[#BE123B]" to="/register">
                                             Register
                                         </Link>
                                     </div>
                                 </div> : <div className="sm:flex sm:gap-4">
-                                    <Link onClick={handleLogOut} className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow" to="/">
+                                    <button onClick={handleLogOut} className="rounded-md bg-[#BE123B]  px-5 py-2.5 text-sm font-medium text-white shadow" >
                                         Log Out
-                                    </Link>
+                                    </button>
                                 </div>}
                             </div>
                         </div>
