@@ -18,6 +18,10 @@ const Services = () => {
             .catch(error => console.log(error));
     }, [])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className="w-11/12 md:w-9/12 mx-auto">
             {loading ? <h1 className="flex text-xl font-bold justify-center items-center h-screen"> Loading... </h1> : <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

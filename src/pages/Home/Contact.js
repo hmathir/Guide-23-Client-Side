@@ -31,7 +31,6 @@ const Contact = () => {
         const oldDetails = {...details}
         oldDetails[name] = value;
         setDetails(oldDetails);
-        console.log(oldDetails);
     }
 
 

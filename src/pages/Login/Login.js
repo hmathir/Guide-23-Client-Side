@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
@@ -47,6 +47,9 @@ const Login = () => {
         })
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return (
         <div className="">

@@ -22,7 +22,7 @@ const Register = () => {
             }).catch((error) => {
                 toast.error(error.message)
             });
-            navigate(from, { replace: true })
+            navigate(from, {replace: true});
             form.reset();
             toast.success('Registration Successful')
         }).catch(e => console.log(e));

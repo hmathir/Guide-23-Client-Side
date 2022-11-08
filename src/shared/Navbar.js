@@ -23,7 +23,7 @@ const Navbar = () => {
                                 <Link to='/blog'><li>Blog</li></Link>
                                 {user ? <>
                                     <Link to='/my-reviews'><li>My Reviews</li></Link>
-                                    <Link><li>Add Service</li></Link>
+                                    <Link to='/add-service'><li>Add Service</li></Link>
                                 </> : <></>}
                             </ul>
                         </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link className="text-gray-500 transition hover:text-gray-500/75" to="/blog">
+                                            <Link className="text-gray-500 transition hover:text-gray-500/75" to="/add-service">
                                                 Add Service
                                             </Link>
                                         </li>

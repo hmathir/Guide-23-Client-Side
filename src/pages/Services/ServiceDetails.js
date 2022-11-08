@@ -9,10 +9,10 @@ import { AuthProvider } from "../../Context/AuthContext";
 const ServiceDetails = () => {
     const service = useLoaderData();
     const { user } = useContext(AuthProvider);
-    console.log(user);
     const location = useLocation();
     const [refresh, setRefresh] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    
 
     const handleReview = (e) => {
         e.preventDefault();
@@ -25,7 +25,6 @@ const ServiceDetails = () => {
         const reviewTime = new Date().toLocaleTimeString();
         const serviceId = service._id;
         const reviewDetails = { reviewText, reviewerEmail, reviewerImg, reviewerName, reviewDate, reviewTime, serviceId };
-        console.log(reviewDetails);
         fetch(`https://ass11-server.vercel.app/reviews`, {
             method: 'POST',
             headers: {
@@ -50,14 +49,20 @@ const ServiceDetails = () => {
     useEffect(() => {
         fetch(`https://ass11-server.vercel.app/reviews?serviceId=${service?._id}`)
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                setReviews(data);
+                setLoading(false);
+            })
             .catch(e => console.log(e));
 
     }, [service?._id, refresh])
-    console.log(reviews);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return (
-        <div className="w-11/12 md:w-9/12 mx-auto my-10">
+        <>{loading ? <div className='flex justify-center h-screen items-center'><h1 className='font-bold text-xl'>Loading...</h1></div> : <div className="w-11/12 md:w-9/12 mx-auto my-10">
             <section>
                 <div className="relative mx-auto max-w-screen-xl px-4 py-8">
                     <div>
@@ -175,7 +180,7 @@ const ServiceDetails = () => {
                                 <div className="relative mt-4">
                                     <div className="bg-white shadow-lg overflow-hidden sm:rounded-md">
                                         <h1 className="p-2 text-xl">User Reviews:</h1>
-                                        {reviews?.map((review,index) => <div key={index} className="px-4 py-5 sm:px-6">
+                                        {reviews?.map((review, index) => <div key={index} className="px-4 py-5 sm:px-6">
                                             <div>
                                                 <div className="flex items-center">
 
@@ -202,7 +207,8 @@ const ServiceDetails = () => {
                 </div>
             </section>
 
-        </div>
+        </div>}</>
+
     );
 };
 

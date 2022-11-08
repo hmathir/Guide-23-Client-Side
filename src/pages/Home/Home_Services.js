@@ -19,7 +19,6 @@ const HomeService = () => {
             .catch(error => console.log(error));
     }, [])
 
-    console.log(services);
     return (
         <>
             {loading ? <h1 className="flex text-xl font-bold justify-center items-center"> Loading... </h1> : <div>
