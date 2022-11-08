@@ -34,8 +34,9 @@ const Register = () => {
                     localStorage.setItem('guide23-token',data.token)
                     toast.success('Registration Successful')
                     form.reset();
-                    navigate(from, { replace: true })
+                    window.location.reload(); //reload again to get the user data.
                 }).catch(e => console.log(e));
+                navigate(from, { replace: true })
             }).catch((error) => {
                 toast.error(error.message)
             });

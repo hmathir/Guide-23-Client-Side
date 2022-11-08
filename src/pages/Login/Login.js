@@ -34,7 +34,7 @@ const Login = () => {
                 toast.success("Sign In Succssful");
             }).catch(e => console.log(e));
             navigate(from, { replace: true })
-            
+
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
                 toast.error('Invalid Email')
@@ -45,18 +45,44 @@ const Login = () => {
         })
     }
     const handleGoogleLogin = () => {
-        signInWithGoogle().then(() => {
+        signInWithGoogle().then((result) => {
+            const user = result.user;
+            const currentUser = {
+                email: user.email,
+            }
+            fetch('https://ass11-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            }).then(res => res.json()).then(data => {
+                localStorage.setItem('guide23-token', data.token)
+                toast.success("Sign In Succssful");
+            }).catch(e => console.log(e));
             navigate(from, { replace: true })
-            toast.success("Sign In Succssful");
-        }).catch((e) => {
-            toast.error(e.message);
-        })
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     const handleGithubLogin = () => {
-        signInWithGithub().then(() => {
-            navigate(from, { replace: true });
-            toast.success("Sign In Succssful");
+        signInWithGithub().then((result) => {
+            const user = result.user;
+            const currentUser = {
+                email: user.email,
+            }
+            fetch('https://ass11-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            }).then(res => res.json()).then(data => {
+                localStorage.setItem('guide23-token', data.token)
+                toast.success("Sign In Succssful");
+            }).catch(e => console.log(e));
+            navigate(from, { replace: true })
         }).catch((e) => {
             toast.error(e.message);
         })
