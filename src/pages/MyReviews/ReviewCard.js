@@ -1,7 +1,7 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 import toast from 'react-hot-toast';
 import { Link, useLocation } from 'react-router-dom';
 import profile from '../../assets/profile.jpeg';

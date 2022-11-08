@@ -60,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/reviews/:id',
-                element: <EditReview></EditReview>,
+                element: <PrivateRoute><EditReview></EditReview></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`https://ass11-server.vercel.app/reviews/${params.id}`);
                 }
