@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import profile from '../../assets/profile.jpeg';
 import { AuthProvider } from "../../Context/AuthContext";
+import useTilte from "../../hooks/useTitle";
 
 const ServiceDetails = () => {
     const service = useLoaderData();
@@ -43,6 +44,8 @@ const ServiceDetails = () => {
             })
             .catch(e => console.log(e));
     }
+
+    useTilte('Service Details');
 
 
     const [reviews, setReviews] = useState([]);

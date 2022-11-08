@@ -2,6 +2,7 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
+import useTilte from "../../hooks/useTitle";
 
 const Register = () => {
     const { signUpWithEmail, updateUserProfile } = useContext(AuthProvider);
@@ -27,7 +28,7 @@ const Register = () => {
             toast.success('Registration Successful')
         }).catch(e => console.log(e));
     }
-
+    useTilte('Register');
     return (
         <div className="pb-20">
 

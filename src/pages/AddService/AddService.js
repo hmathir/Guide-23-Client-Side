@@ -1,9 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useTilte from "../../hooks/useTitle";
 
 const AddService = () => {
     const [loading, setLoading] = useState(false);
-
+    useTilte('Add Service');
 
     const handleAddService = (e) => {
         setLoading(true);

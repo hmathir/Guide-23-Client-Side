@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
+import useTilte from "../../hooks/useTitle";
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -21,6 +22,8 @@ const Services = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+
+      useTilte('Services');
 
     return (
         <div className="w-11/12 md:w-9/12 mx-auto">

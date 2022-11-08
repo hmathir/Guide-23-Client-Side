@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import useTilte from "../../hooks/useTitle";
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    useTilte('Blogs');
 
     useEffect(() => {
         fetch(`https://ass11-server.vercel.app/blogs`)

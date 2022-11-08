@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../../Context/AuthContext";
+import useTilte from "../../hooks/useTitle";
 import ReviewCard from "./ReviewCard";
 
 const MyReviews = () => {
@@ -21,6 +22,8 @@ const MyReviews = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+
+      useTilte('My Reviews');
 
 
     return (

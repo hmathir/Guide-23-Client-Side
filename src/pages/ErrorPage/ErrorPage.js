@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useTilte from "../../hooks/useTitle";
 
 const ErrorPage = () => {
+    useTilte('Upps! 404');
     return (
         <div>
 

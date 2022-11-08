@@ -1,9 +1,15 @@
+import { useEffect } from "react";
+import useTilte from "../../hooks/useTitle";
 import Banner from "./Banner";
 import Contact from "./Contact";
 import HomeService from "./Home_Services";
 import Map from "./Map";
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+      useTilte('Home');
     return (
         <div>
             <div className="w-11/12 md:w-9/12 mx-auto">
