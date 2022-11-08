@@ -32,9 +32,9 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <a className="text-gray-900 transition hover:text-gray-900/75" href="#contact" rel="noreferrer">
-                                        Contact
-                                    </a>
+                                    <Link to={`/services`} className="text-gray-900 transition hover:text-gray-900/75"  rel="noreferrer">
+                                        Services
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
