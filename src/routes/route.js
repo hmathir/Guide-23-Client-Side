@@ -5,6 +5,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import EditReview from "../pages/MyReviews/EditReview";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import Register from "../pages/Register/Register";
 import ServiceDetails from "../pages/Services/ServiceDetails";
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/reviews/:id',
+                element: <EditReview></EditReview>,
+                loader: ({ params }) => {
+                    return fetch(`https://ass11-server.vercel.app/reviews/${params.id}`);
+                }
+                
             }
         ]
     }

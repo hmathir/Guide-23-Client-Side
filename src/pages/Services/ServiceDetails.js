@@ -50,7 +50,7 @@ const ServiceDetails = () => {
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`https://ass11-server.vercel.app/reviews?serviceId=${service?._id}`)
+        fetch(`https://ass11-server.vercel.app/reviewsbyserviceid?serviceId=${service?._id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

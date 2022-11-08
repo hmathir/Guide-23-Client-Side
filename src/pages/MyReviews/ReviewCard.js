@@ -2,6 +2,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import profile from '../../assets/profile.jpeg';
 const ReviewCard = ({ review, refresh, setRefresh }) => {
 
@@ -55,7 +56,7 @@ const ReviewCard = ({ review, refresh, setRefresh }) => {
                         </div>
                     </div>
                     <div className='flex items-center gap-4'>
-                        <button className='text-white rounded-xl'><FontAwesomeIcon icon={faEdit} /></button>
+                        <Link to={`/reviews/${review._id}`} className='text-white rounded-xl'><FontAwesomeIcon icon={faEdit} /></Link>
                         <button onClick={handleDelete} className=' text-white rounded-xl'><FontAwesomeIcon icon={faTrash} /></button>
                     </div>
                 </div>
