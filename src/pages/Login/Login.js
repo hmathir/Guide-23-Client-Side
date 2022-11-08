@@ -31,16 +31,15 @@ const Login = () => {
                 },
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
-                localStorage.setItem('guide23-token',data.token)
-                navigate(from, { replace: true })
+                localStorage.setItem('guide23-token', data.token)
                 toast.success("Sign In Succssful");
             }).catch(e => console.log(e));
-
+            navigate(from, { replace: true })
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
                 toast.error('Invalid Email')
             }
-            else{
+            else {
                 toast.error(e.message);
             }
         })
@@ -65,9 +64,9 @@ const Login = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
 
-      useTilte('Log in');
+    useTilte('Log in');
 
     return (
         <div className="">

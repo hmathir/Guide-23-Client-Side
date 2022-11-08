@@ -1,13 +1,17 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import profile from '../../assets/profile.jpeg';
+
+
 const ReviewCard = ({ review, refresh, setRefresh }) => {
 
     const [service, setService] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const location = useLocation();
 
 
     useEffect(() => {
@@ -22,21 +26,25 @@ const ReviewCard = ({ review, refresh, setRefresh }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
 
     const handleDelete = () => {
         const agree = window.confirm('Are you sure to delete this review?');
-
+        if(!agree){
+            return;
+        }
         fetch(`https://ass11-server.vercel.app/reviews/${review?._id}`, {
             method: 'DELETE'
         })
-            .then(res => res.json())
+            .then(res => {
+                res.json()
+                setRefresh(!refresh);
+            })
             .then(data => {
                 if (data) {
-                    if(agree){
+                    if (agree) {
                         toast.success('Review deleted successfully');
                     }
-                    setRefresh(!refresh);
                 }
             })
             .catch(error => console.log(error));
@@ -56,7 +64,7 @@ const ReviewCard = ({ review, refresh, setRefresh }) => {
                         </div>
                     </div>
                     <div className='flex items-center gap-4'>
-                        <Link to={`/reviews/${review._id}`} className='text-white rounded-xl'><FontAwesomeIcon icon={faEdit} /></Link>
+                        <Link to={`/reviews/${review._id}`} state={{ from: location }} replace className='text-white rounded-xl'><FontAwesomeIcon icon={faEdit} /></Link>
                         <button onClick={handleDelete} className=' text-white rounded-xl'><FontAwesomeIcon icon={faTrash} /></button>
                     </div>
                 </div>

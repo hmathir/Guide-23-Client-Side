@@ -95,9 +95,10 @@ However, your website **cannot** be related to your **previous assignments** or 
 ---DONE---
 5. Implement the basic version of the **JWT**  **token** for email/password-based authentication. Upon login, you will create a jwt token and store it on the client side, and for the "My reviews" page, you will send the token and verify the user. Implementing 401 and 403 is optional. 
 
-
+---DONE---
 6. In the "My reviews" page, clicking the **edit review** button/icon shows that review in a modal/in a new route and lets the user update it.
 
+---DONE---
 7.  **Simple challenge** In the service details page, **sort the reviews in a descending order** by inserting time(you have to keep the inserting time when you add a review, you can do it with the Date object, or you can explore MongoDB documentation). You will have to implement this code on the server side.
 
 ### Optional

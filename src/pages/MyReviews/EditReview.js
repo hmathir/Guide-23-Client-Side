@@ -1,17 +1,20 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import profile from '../../assets/profile.jpeg';
 import { AuthProvider } from "../../Context/AuthContext";
 
 const EditReview = () => {
     const review = useLoaderData();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const {user, loading} = useContext(AuthProvider);
-    console.log(review);
+
     const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
         const reviewText = form.reviewText.value;
-        console.log(reviewText);
 
         fetch(`https://ass11-server.vercel.app/reviews/${review._id}`, {
             method: 'PATCH',
@@ -19,10 +22,11 @@ const EditReview = () => {
                 'content-type': 'application/json'
                 },
                 body: JSON.stringify({reviewText})
-            }).then(res => res.json()).then(data => {
-                console.log(data);
-            }).then(data =>{
-                console.log(data)
+            }).then(res => res.json()).then(data =>{
+                if(data){
+                    toast.success('Review Updated');
+                    navigate(from, {replace: true})
+                }
             }).catch(e => console.log(e));
 
     }

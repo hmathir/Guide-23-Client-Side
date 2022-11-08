@@ -190,10 +190,13 @@ const ServiceDetails = () => {
                                                     <img referrerPolicy="no-referrer" src={review?.reviewerImg ? review.reviewerImg : profile} className="w-16 m-2 rounded-full" alt="" />
                                                     <div>
                                                         <div>
-                                                            <p>{review?.reviewerName ? review?.reviewerName : 'Anonymous'}</p>
+                                                            <p className="text-xl">{review?.reviewerName ? review?.reviewerName : 'Anonymous'}</p>
                                                         </div>
                                                         <div>
                                                             <p>Date: {review.reviewDate}</p>
+                                                        </div>
+                                                        <div>
+                                                            <p>Time: {review.reviewTime}</p>
                                                         </div>
                                                     </div>
 
