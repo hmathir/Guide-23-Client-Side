@@ -21,13 +21,13 @@ const Services = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
 
-      useTilte('Services');
+    useTilte('Services');
 
     return (
         <div className="w-11/12 md:w-9/12 mx-auto">
-            {loading ? <h1 className="flex text-xl font-bold justify-center items-center h-screen"> Loading... </h1> : <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {loading ? <h1 className="flex text-xl font-bold justify-center items-center h-screen"> Loading... </h1> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     services.map((service, index) => <div key={index} className="border border-black rounded-lg">
                         <div className="block rounded-lg p-4 shadow-lg shadow-indigo-100">
@@ -60,8 +60,8 @@ const Services = () => {
                                     </div>
                                 </dl>
 
-                                <div className="mt-6 flex items-center gap-8 text-xs">
-                                    <div className="sm:inline-flex sm:shrink-0 sm:items-center">
+                                <div className="mt-6 flex items-center gap-4 text-xs">
+                                    <div className="sm:inline-flex  sm:items-center">
                                         <FontAwesomeIcon icon={faStar} />
 
                                         <div className="mt-1.5 sm:ml-3 sm:mt-0">
@@ -71,7 +71,7 @@ const Services = () => {
                                         </div>
                                     </div>
 
-                                    <div className="sm:inline-flex sm:shrink-0 sm:items-center">
+                                    <div className="sm:inline-flex sm:items-center">
 
                                         <FontAwesomeIcon icon={faUser} />
                                         <div className="mt-1.5 sm:ml-3 sm:mt-0">
@@ -81,11 +81,9 @@ const Services = () => {
                                         </div>
                                     </div>
 
-                                    <div className="sm:inline-flex sm:shrink-0 sm:items-center">
-                                        <div className="mt-1.5 sm:ml-3 sm:mt-0">
-                                            <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
-                                        </div>
-                                    </div>
+
+                                    <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
+
                                 </div>
                             </div>
                         </div>

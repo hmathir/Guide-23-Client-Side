@@ -18,11 +18,10 @@ const HomeService = () => {
             })
             .catch(error => console.log(error));
     }, [])
-
     return (
         <>
             {loading ? <h1 className="flex text-xl font-bold justify-center items-center"> Loading... </h1> : <div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                     {
                         services.map((service, index) => <div key={index} className="border border-black rounded-lg">
                             <div className="block rounded-lg p-4 shadow-lg shadow-indigo-100">
@@ -54,7 +53,7 @@ const HomeService = () => {
                                         </div>
                                     </dl>
 
-                                    <div className="mt-6 flex items-center gap-8 text-xs">
+                                    <div className="mt-6 flex items-center gap-4 text-xs">
                                         <div className="sm:inline-flex sm:shrink-0 sm:items-center">
                                             <FontAwesomeIcon icon={faStar} />
 
@@ -75,11 +74,9 @@ const HomeService = () => {
                                             </div>
                                         </div>
 
-                                        <div className="sm:inline-flex sm:shrink-0 sm:items-center">
-                                            <div className="mt-1.5 sm:ml-3 sm:mt-0">
-                                                <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
-                                            </div>
-                                        </div>
+
+                                        <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
+
                                     </div>
                                 </div>
                             </div>

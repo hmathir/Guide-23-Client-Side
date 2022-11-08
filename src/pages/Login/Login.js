@@ -23,7 +23,6 @@ const Login = () => {
             const currentUser = {
                 email: user.email,
             }
-
             fetch('https://ass11-server.vercel.app/jwt', {
                 method: 'POST',
                 headers: {
@@ -35,6 +34,7 @@ const Login = () => {
                 toast.success("Sign In Succssful");
             }).catch(e => console.log(e));
             navigate(from, { replace: true })
+            
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
                 toast.error('Invalid Email')

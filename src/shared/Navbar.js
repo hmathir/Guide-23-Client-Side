@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
 import { AuthProvider } from "../Context/AuthContext";
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthProvider);
+    const { user, logOut } = useContext(AuthProvider);
     const handleLogOut = () => {
-        logOut().then(res=>res()).catch(err=>err.message);
+        logOut().then(res => res()).catch(err => err.message);
     }
     return (
         <div className="w-11/12 md:w-9/12 mx-auto">
@@ -28,10 +28,14 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="flex-1 md:flex md:items-center md:gap-12">
-                            <div className="block text-teal-600">
+
+                            <Link to='/' className="block text-teal-600">
                                 <span className="sr-only">Home</span>
+
                                 <img src={logo} className='w-16 md:w-24' alt="" />
-                            </div>
+
+                            </Link>
+
                         </div>
                         <div className="md:flex md:items-center md:gap-12">
                             <nav aria-label="Site Nav" className="hidden md:block">
