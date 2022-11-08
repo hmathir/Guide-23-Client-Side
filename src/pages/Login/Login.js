@@ -5,7 +5,7 @@ import { AuthProvider } from '../../Context/AuthContext';
 import useTilte from '../../hooks/useTitle';
 
 const Login = () => {
-    const {  signInWithEmail,
+    const { signInWithEmail,
         signInWithGoogle,
         signInWithGithub, } = useContext(AuthProvider);
     const navigate = useNavigate();
@@ -18,9 +18,24 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        signInWithEmail(email, password).then(() => {
-            navigate(from, { replace: true })
-            toast.success("Sign In Succssful");
+        signInWithEmail(email, password).then((res) => {
+            const user = res.user;
+            const currentUser = {
+                email: user.email,
+            }
+
+            fetch('https://ass11-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            }).then(res => res.json()).then(data => {
+                localStorage.setItem('guide23-token',data.token)
+                navigate(from, { replace: true })
+                toast.success("Sign In Succssful");
+            }).catch(e => console.log(e));
+
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
                 toast.error('Invalid Email')

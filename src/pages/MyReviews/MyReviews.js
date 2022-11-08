@@ -10,7 +10,11 @@ const MyReviews = () => {
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        fetch(`https://ass11-server.vercel.app/reviews?reviewerEmail=${user?.email}`)
+        fetch(`https://ass11-server.vercel.app/reviews?reviewerEmail=${user?.email}`, {
+            headers: {
+                "authorization" : `Bearer ${localStorage.getItem('guide23-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

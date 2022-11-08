@@ -20,12 +20,26 @@ const Register = () => {
         const password = form.password.value;
         signUpWithEmail(email, password).then(() => {
             updateUserProfile(name, photoURL).then(() => {
+                const currentUser = {
+                    email: email,
+                }
+    
+                fetch('https://ass11-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                }).then(res => res.json()).then(data => {
+                    localStorage.setItem('guide23-token',data.token)
+                    toast.success('Registration Successful')
+                    form.reset();
+                    navigate(from, { replace: true })
+                }).catch(e => console.log(e));
             }).catch((error) => {
                 toast.error(error.message)
             });
-            navigate(from, {replace: true});
-            form.reset();
-            toast.success('Registration Successful')
+        
         }).catch(e => console.log(e));
     }
     useTilte('Register');
