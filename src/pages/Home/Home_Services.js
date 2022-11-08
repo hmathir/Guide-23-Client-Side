@@ -53,31 +53,31 @@ const HomeService = () => {
                                         </div>
                                     </dl>
 
-                                    <div className="mt-6 flex items-center gap-4 text-xs">
-                                        <div className="sm:inline-flex sm:shrink-0 sm:items-center">
-                                            <FontAwesomeIcon icon={faStar} />
+                                    <div className="mt-6 flex items-center justify-between gap-4 text-xs">
+                                    <div className="sm:inline-flex  sm:items-center">
+                                        <FontAwesomeIcon icon={faStar} />
 
-                                            <div className="mt-1.5 sm:ml-3 sm:mt-0">
-                                                <p className="text-gray-500">Rating</p>
+                                        <div className="mt-1.5 sm:ml-3 sm:mt-0">
+                                            <p className="text-gray-500">Rating</p>
 
-                                                <p className="font-medium">{service.rating}</p>
-                                            </div>
+                                            <p className="font-medium">{service.rating}</p>
                                         </div>
-
-                                        <div className="sm:inline-flex sm:shrink-0 sm:items-center">
-
-                                            <FontAwesomeIcon icon={faUser} />
-                                            <div className="mt-1.5 sm:ml-3 sm:mt-0">
-                                                <p className="text-gray-500">Total Review</p>
-
-                                                <p className="font-medium">{service.review}</p>
-                                            </div>
-                                        </div>
-
-
-                                        <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
-
                                     </div>
+
+                                    <div className="sm:inline-flex sm:items-center">
+
+                                        <FontAwesomeIcon icon={faUser} />
+                                        <div className="mt-1.5 sm:ml-3 sm:mt-0">
+                                            <p className="text-gray-500">Total Review</p>
+
+                                            <p className="font-medium">{service.review}</p>
+                                        </div>
+                                    </div>
+
+
+                                    <Link to={`/services/${service._id}`} className="px-3 py-2 bg-[#BE123B] text-white rounded-xl ">View Details</Link>
+
+                                </div>
                                 </div>
                             </div>
 

@@ -60,7 +60,7 @@ const Services = () => {
                                     </div>
                                 </dl>
 
-                                <div className="mt-6 flex items-center gap-4 text-xs">
+                                <div className="mt-6 flex items-center justify-between gap-4 text-xs">
                                     <div className="sm:inline-flex  sm:items-center">
                                         <FontAwesomeIcon icon={faStar} />
 
