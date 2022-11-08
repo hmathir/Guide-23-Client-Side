@@ -2,16 +2,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const AddService = () => {
-    //Add Service
     const [loading, setLoading] = useState(false);
 
 
-    // name
-    // price
-    // img
-    // rating
-    // review
-    // discription
     const handleAddService = (e) => {
         setLoading(true);
         e.preventDefault();
@@ -30,7 +23,6 @@ const AddService = () => {
             review,
             discription
         }
-        console.log(serviceData);
         fetch('https://ass11-server.vercel.app/services', {
             method: 'POST',
             headers: {
@@ -47,8 +39,6 @@ const AddService = () => {
                 }
             })
             .catch(e => console.log(e));
-
-
     }
 
     return (
