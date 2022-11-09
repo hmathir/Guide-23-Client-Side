@@ -4,7 +4,7 @@ import useTilte from "../../hooks/useTitle";
 import ReviewCard from "./ReviewCard";
 
 const MyReviews = () => {
-    const { user} = useContext(AuthProvider);
+    const { user, logOut } = useContext(AuthProvider);
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [refresh, setRefresh] = useState(false);
@@ -12,22 +12,27 @@ const MyReviews = () => {
     useEffect(() => {
         fetch(`https://ass11-server.vercel.app/reviews?reviewerEmail=${user?.email}`, {
             headers: {
-                "authorization" : `Bearer ${localStorage.getItem('guide23-token')}`
+                "authorization": `Bearer ${localStorage.getItem('guide23-token')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut();
+                }
+                return res.json()
+            })
             .then(data => {
                 setReviews(data);
                 setLoading(false);
             })
             .catch(error => console.log(error));
-    }, [user?.email, refresh]);
-    
+    }, [user?.email, refresh, logOut]);
+
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
 
-      useTilte('My Reviews');
+    useTilte('My Reviews');
 
 
     return (
@@ -39,11 +44,11 @@ const MyReviews = () => {
                     <div className="text-white ">
                         {
                             reviews.length > 0 ? <>
-                            {
-                            reviews.map((review, index) => <ReviewCard key={index} review={review} refresh={refresh} setRefresh={setRefresh}></ReviewCard>)
-                        }</> : <div className="flex justify-center items-center">
-                            <h1 className="font-bold text-xl">No reviews were added.</h1>
-                        </div>
+                                {
+                                    reviews.map((review, index) => <ReviewCard key={index} review={review} refresh={refresh} setRefresh={setRefresh}></ReviewCard>)
+                                }</> : <div className="flex justify-center items-center">
+                                <h1 className="font-bold text-xl">No reviews were added.</h1>
+                            </div>
                         }
                     </div>
                 </div>
