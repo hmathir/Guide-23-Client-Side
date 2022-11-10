@@ -31,7 +31,9 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-            }).catch(e => console.log(e));
+            }).catch(e => {
+                toast.error(e.message);
+            });
             navigate(from, { replace: true })
             toast.success("Sign In Succssful");
         }).catch((e) => {
@@ -57,12 +59,11 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-    
-            }).catch(e => console.log(e));
+
+            }).catch(e => toast.error(e.message));
             navigate(from, { replace: true })
             toast.success("Sign In Succssful");
         }).catch((error) => {
-            console.log(error);
             toast.error(error.message);
         });
     }
@@ -81,12 +82,11 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-           
-            }).catch(e => console.log(e));
+
+            }).catch(e => toast.error(e.message));
             navigate(from, { replace: true })
             toast.success("Sign In Succssful");
         }).catch((error) => {
-            console.log(error);
             toast.error(error.message);
         });
     }
