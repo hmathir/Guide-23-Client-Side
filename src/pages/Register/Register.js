@@ -32,11 +32,11 @@ const Register = () => {
                     body: JSON.stringify(currentUser)
                 }).then(res => res.json()).then(data => {
                     localStorage.setItem('guide23-token',data.token)
-                    toast.success('Registration Successful')
                     form.reset();
                     window.location.reload(); //reload again to get the user data.
                 }).catch(e => console.log(e));
                 navigate(from, { replace: true })
+                toast.success('Registration Successful')
             }).catch((error) => {
                 toast.error(error.message)
             });
