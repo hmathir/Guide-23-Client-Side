@@ -31,10 +31,9 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-                toast.success("Sign In Succssful");
             }).catch(e => console.log(e));
             navigate(from, { replace: true })
-
+            toast.success("Sign In Succssful");
         }).catch((e) => {
             if (e.message === 'Firebase: Error (auth/invalid-email).') {
                 toast.error('Invalid Email')
@@ -58,11 +57,13 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-                toast.success("Sign In Succssful");
+    
             }).catch(e => console.log(e));
             navigate(from, { replace: true })
+            toast.success("Sign In Succssful");
         }).catch((error) => {
             console.log(error);
+            toast.error(error.message);
         });
     }
 
@@ -80,12 +81,14 @@ const Login = () => {
                 body: JSON.stringify(currentUser)
             }).then(res => res.json()).then(data => {
                 localStorage.setItem('guide23-token', data.token)
-                toast.success("Sign In Succssful");
+           
             }).catch(e => console.log(e));
             navigate(from, { replace: true })
-        }).catch((e) => {
-            toast.error(e.message);
-        })
+            toast.success("Sign In Succssful");
+        }).catch((error) => {
+            console.log(error);
+            toast.error(error.message);
+        });
     }
 
     useEffect(() => {
@@ -93,6 +96,8 @@ const Login = () => {
     }, [])
 
     useTilte('Log in');
+
+    //Add some input feilds and a button to submit the form
 
     return (
         <div className="">
